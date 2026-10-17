@@ -1,0 +1,10 @@
+#include "toucan_left.overlay"
+
+// In dongle mode the trackpad events go straight from the right half to the dongle
+&trackpad_split {
+    status = "disabled";
+};
+
+&trackpad_listener {
+    status = "disabled";
+};

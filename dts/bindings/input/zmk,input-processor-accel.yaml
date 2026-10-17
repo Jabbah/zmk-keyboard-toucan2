@@ -1,0 +1,44 @@
+description: Velocity-based mouse acceleration input processor
+
+compatible: "zmk,input-processor-accel"
+
+include: base.yaml
+
+properties:
+  "#input-processor-cells":
+    type: int
+    const: 0
+    required: true
+
+  track-remainders:
+    type: boolean
+    description: >
+      Enable remainder tracking (not needed for cursor acceleration).
+
+  min-delta:
+    type: int
+    required: true
+    description: >
+      Event delta magnitude (|value|) at or below which min-scale applies.
+      Represents a slow swipe. Tune between 1–5.
+
+  max-delta:
+    type: int
+    required: true
+    description: >
+      Event delta magnitude at or above which max-scale applies.
+      Represents a fast swipe. Tune between 8–20.
+
+  min-scale:
+    type: int
+    required: true
+    description: >
+      Scale numerator for slow movement; denominator is 100.
+      100 = 1.0x, 150 = 1.5x.
+
+  max-scale:
+    type: int
+    required: true
+    description: >
+      Scale numerator for fast movement; denominator is 100.
+      250 = 2.5x, 300 = 3.0x.

@@ -1,5 +1,12 @@
+config SHIELD_TOUCAN_DONGLE
+    def_bool $(shields_list_contains,toucan_dongle)
+
 config SHIELD_TOUCAN_LEFT
     def_bool $(shields_list_contains,toucan_left)
+
+# Left half built as a peripheral for use with the dongle
+config SHIELD_TOUCAN_LEFT_PERIPHERAL
+    def_bool $(shields_list_contains,toucan_left_peripheral)
 
 config SHIELD_TOUCAN_RIGHT
     def_bool $(shields_list_contains,toucan_right)

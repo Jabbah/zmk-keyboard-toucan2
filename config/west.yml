@@ -8,6 +8,12 @@ manifest:
       url-base: https://github.com/geeksville
     - name: beekeeb
       url-base: https://github.com/beekeeb
+    - name: albertclee
+      url-base: https://github.com/alee0729
+    - name: kot149
+      url-base: https://github.com/kot149
+    - name: jabbah
+      url-base: https://github.com/jabbah
   projects:
     - name: zmk
       remote: zmkfirmware
@@ -22,5 +28,14 @@ manifest:
     - name: zmk-input-zoom
       remote: beekeeb
       revision: main
+    - name: zmk-dongle-screen
+      remote: albertclee
+      revision: main
+    - name: zmk-scroll-snap
+      remote: kot149
+      revision: v1
+    - name: zmk-input-inertia
+      remote: jabbah
+      revision: 99471e231358f7d10aa0e875a2dcb1e8ac5df78c
   self:
     path: config
