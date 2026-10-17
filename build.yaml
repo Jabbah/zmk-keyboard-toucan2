@@ -26,7 +26,7 @@ include:
     snippet: studio-rpc-usb-uart
     cmake-args: -DCONFIG_ZMK_STUDIO=y
   - board: seeeduino_xiao_ble
-    shield: toucan_left_peripheral rgbled_adapter nice_view
+    shield: toucan_left_peripheral rgbled_adapter nice_view_gem
   # Standalone: left half is central and connects to the computer over Bluetooth
   - board: seeeduino_xiao_ble
     shield: toucan_left rgbled_adapter nice_view_gem

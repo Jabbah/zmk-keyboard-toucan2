@@ -165,9 +165,9 @@
         compatible = "zmk,input-processor-accel";
         #input-processor-cells = <0>;
         min-delta = <2>;
-        max-delta = <20>;
+        max-delta = <30>;
         min-scale = <100>;
-        max-scale = <250>;
+        max-scale = <150>;
     };
 
     // zip_inertia must come before is_touching_processor: the behaviors processors stop the
