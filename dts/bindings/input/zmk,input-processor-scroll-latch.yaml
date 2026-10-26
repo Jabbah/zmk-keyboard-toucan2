@@ -1,0 +1,38 @@
+description: >
+  Keeps a two-finger scroll going briefly if one finger lifts. Cursor movement
+  within timeout-ms of the last scroll wheel event is converted to scroll on the
+  dominant axis; after that, or once all fingers lift, movement is left alone.
+
+compatible: "zmk,input-processor-scroll-latch"
+
+include: base.yaml
+
+properties:
+  "#input-processor-cells":
+    type: int
+    const: 0
+    required: true
+
+  track-remainders:
+    type: boolean
+    description: >
+      Enable remainder tracking (not needed for scroll latching).
+
+  timeout-ms:
+    type: int
+    default: 200
+    description: >
+      How long after the last scroll event cursor movement is still treated as
+      scroll (i.e. the grace period after one finger lifts).
+
+  invert-scroll-x:
+    type: boolean
+    description: >
+      Negate X when converting to horizontal scroll. Match the trackpad driver's
+      invert-scroll-x setting.
+
+  invert-scroll-y:
+    type: boolean
+    description: >
+      Negate Y when converting to vertical scroll. Match the trackpad driver's
+      invert-scroll-y setting.

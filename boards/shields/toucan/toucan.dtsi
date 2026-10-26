@@ -21,10 +21,14 @@
     move-threshold-stop = <1>;          // Stop threshold (pix/report)
 
     // --- Scrolling Settings ---
-    scroll-decay-factor-int = <98>;    // Scroll decay rate
-    scroll-report-interval-ms = <65>;  // Scroll report interval (ms)
-    scroll-threshold-start = <2>;      // Start threshold (pix/report)
-    scroll-threshold-stop = <0>;       // Stop threshold (pix/report)
+    // Scroll inertia starts on finger lift at the speed measured over the fastest
+    // velocity-window in the last velocity-history ms, so these are per 20ms report.
+    scroll-decay-factor-int = <96>;    // Scroll decay rate (per report)
+    scroll-report-interval-ms = <20>;  // Scroll report interval (ms)
+    scroll-threshold-start = <1>;      // Start threshold (wheel units/report)
+    scroll-threshold-stop = <0>;       // Stop threshold (wheel units/report)
+    scroll-velocity-window-ms = <50>;
+    scroll-velocity-history-ms = <100>;
 };
 
 / {
@@ -170,12 +174,23 @@
         max-scale = <150>;
     };
 
+    // Keeps two-finger scroll going for timeout-ms if one finger lifts. Invert flags must
+    // match the tps43 invert-scroll-x/y settings in toucan_right.overlay.
+    zip_scroll_latch: zip_scroll_latch {
+        compatible = "zmk,input-processor-scroll-latch";
+        #input-processor-cells = <0>;
+        timeout-ms = <200>;
+        invert-scroll-y;
+    };
+
+    // zip_scroll_latch must come first: it needs raw X/Y (before acceleration) and to see
+    // INPUT_BTN_TOUCH before the behaviors processors stop it.
     // zip_inertia must come before is_touching_processor: the behaviors processors stop the
     // touch/swipe events, and inertia needs to see INPUT_BTN_TOUCH to cancel on a new touch.
     trackpad_listener: trackpad_listener {
         compatible = "zmk,input-listener";
         status = "disabled";
         device = <&trackpad_split>;
-        input-processors = <&zip_accel>, <&zip_scroll_scaler 1 20>, <&zip_inertia>, <&zip_zoom_mapper>, <&is_touching_processor>, <&swipe_button_mapper>;
+        input-processors = <&zip_scroll_latch>, <&zip_accel>, <&zip_scroll_scaler 1 20>, <&zip_inertia>, <&zip_zoom_mapper>, <&is_touching_processor>, <&swipe_button_mapper>;
     };
 };

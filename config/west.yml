@@ -36,6 +36,6 @@ manifest:
       revision: v1
     - name: zmk-input-inertia
       remote: jabbah
-      revision: 99471e231358f7d10aa0e875a2dcb1e8ac5df78c
+      revision: c4a6053f4e88b9333fe2d1d03acf92f1de735c68
   self:
     path: config
