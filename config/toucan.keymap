@@ -81,39 +81,6 @@
             key-positions = <26 28>;
         };
 
-        LeftMouseClick {
-            bindings = <&mkp MB1>;
-            timeout-ms = <100>;
-            key-positions = <28 29>;
-        };
-
-        RightMouseClick {
-            bindings = <&mkp MB2>;
-            timeout-ms = <100>;
-            key-positions = <30 31>;
-        };
-
-        TopLeftMouseClick {
-            bindings = <&mkp MB1>;
-            timeout-ms = <80>;
-            require-prior-idle-ms = <1500>;
-            key-positions = <2 3>;
-        };
-
-        TopRightMouseClick {
-            bindings = <&mkp MB2>;
-            timeout-ms = <80>;
-            require-prior-idle-ms = <1500>;
-            key-positions = <3 4>;
-        };
-
-        TopScrollEnable {
-            bindings = <&mo 1>;
-            timeout-ms = <80>;
-            require-prior-idle-ms = <1500>;
-            key-positions = <2 4>;
-        };
-
         non_us_double_quote {
             bindings = <&kp AT>;
             timeout-ms = <500>;

@@ -164,8 +164,8 @@
     zip_accel: zip_accel {
         compatible = "zmk,input-processor-accel";
         #input-processor-cells = <0>;
-        min-delta = <2>;
-        max-delta = <30>;
+        min-delta = <4>;
+        max-delta = <40>;
         min-scale = <100>;
         max-scale = <150>;
     };
@@ -177,16 +177,5 @@
         status = "disabled";
         device = <&trackpad_split>;
         input-processors = <&zip_accel>, <&zip_scroll_scaler 1 20>, <&zip_inertia>, <&zip_zoom_mapper>, <&is_touching_processor>, <&swipe_button_mapper>;
-        scroller_accel {
-            layers = <1 2 3>;
-            input-processors = <
-                &zip_accel
-                &zip_xy_to_scroll_mapper
-                &zip_scroll_snap
-                &zip_scroll_scaler 1 10
-                &zip_scroll_transform INPUT_TRANSFORM_Y_INVERT
-                &zip_inertia
-            >;
-        };
     };
 };

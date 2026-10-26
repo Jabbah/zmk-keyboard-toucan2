@@ -25,7 +25,7 @@ static int accel_handle_event(const struct device *dev,
     if (event->type != INPUT_EV_REL) {
         return ZMK_INPUT_PROC_CONTINUE;
     }
-    // Scroll wheel codes are handled by the separate scroller sub-node pipeline.
+    // Scroll wheel codes (two-finger scroll) pass through unscaled.
     // Speed is approximated per-axis: diagonal swipes scale each axis independently,
     // so a diagonal at speed S applies the same scale as an axial swipe at speed S/sqrt(2).
     if (event->code != INPUT_REL_X && event->code != INPUT_REL_Y) {
